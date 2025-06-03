@@ -94,7 +94,7 @@
                 updateInfo("正在加载数据...");
                 
                 // 加载北京边界
-                const beijingRes = await fetch('Beijing.json');
+                const beijingRes = await fetch('/hospital-map/Beijing.json');
                 if (!beijingRes.ok) throw new Error('北京边界数据加载失败');
                 const beijingGeoJSON = await beijingRes.json();
                 beijingPolygon = turf.combine(beijingGeoJSON).features[0];
@@ -111,7 +111,7 @@
                 map.fitBounds(beijingLayer.getBounds());
                 
                 // 加载医院数据
-                const hospitalRes = await fetch('hospitals_full.geojson');
+                const hospitalRes = await fetch('/hospital-map/hospitals_full.geojson');
                 if (!hospitalRes.ok) throw new Error('医院数据加载失败');
                 hospitalData = await hospitalRes.json();
                 
